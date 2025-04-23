@@ -1,6 +1,6 @@
 const calculateAverage = (numbersArray) => {
   if (!numbersArray || numbersArray.length === 0) {
-    return "No numbers to calculate average";
+    return "Aucun chiffre pour calculer la moyenne";
   }
 
   let sum = 0;
@@ -13,8 +13,21 @@ const calculateAverage = (numbersArray) => {
   return average;
 };
 
-console.log(calculateAverage([5, 10, 15]));
-console.log(calculateAverage([10, 20, 30, 20]));
-console.log(calculateAverage());
+const displayAverage = () => {
+  const numbersInput = document.getElementById("numbersInput");
+  const resultArea = document.getElementById("resultArea");
 
-export default calculateAverage;
+  const inputValue = numbersInput.value.trim();
+
+  let numbers = [];
+  if (inputValue) {
+    numbers = inputValue
+      .split(",")
+      .map((item) => parseFloat(item.trim()))
+      .filter((item) => !isNaN(item));
+  }
+
+  const averageResult = calculateAverage(numbers);
+
+  resultArea.textContent = averageResult;
+};

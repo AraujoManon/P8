@@ -8,19 +8,31 @@ const calculate = (num1, num2, operator) => {
       return num1 * num2;
     case "/":
       if (num2 === 0) {
-        return "Division by zero is not allowed";
+        return "La division par zéro n'est pas autorisée";
       }
       return num1 / num2;
     default:
-      return "Invalid operator";
+      return "Opérateur invalide";
   }
 };
 
-console.log(calculate(5, 3, "+"));
-console.log(calculate(10, 4, "-"));
-console.log(calculate(7, 2, "*"));
-console.log(calculate(12, 3, "/"));
-console.log(calculate(8, 0, "/"));
-console.log(calculate(4, 5, "%"));
+const performCalculation = () => {
+  const num1Input = document.getElementById("num1Input");
+  const num2Input = document.getElementById("num2Input");
+  const operatorInput = document.getElementById("operatorInput");
+  const resultArea = document.getElementById("resultArea");
 
-export default calculate;
+  const num1 = parseFloat(num1Input.value);
+  const num2 = parseFloat(num2Input.value);
+  const operator = operatorInput.value.trim();
+
+  if (isNaN(num1) || isNaN(num2)) {
+    resultArea.textContent =
+      "Veuillez entrer des nombres valides pour les deux champs.";
+    return;
+  }
+
+  const result = calculate(num1, num2, operator);
+
+  resultArea.textContent = result;
+};

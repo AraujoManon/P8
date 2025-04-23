@@ -13,4 +13,20 @@ const pairNumbers = (min, max) => {
   return result;
 };
 
-export default pairNumbers;
+const displayEvenNumbers = () => {
+  const minInput = document.getElementById("minInput");
+  const maxInput = document.getElementById("maxInput");
+  const resultArea = document.getElementById("resultArea");
+
+  const min = parseInt(minInput.value);
+  const max = parseInt(maxInput.value);
+
+  if (isNaN(min) || isNaN(max)) {
+    resultArea.textContent =
+      "Veuillez entrer des nombres valides pour le minimum et le maximum.";
+    return;
+  }
+
+  const evenNumbersString = pairNumbers(min, max);
+  resultArea.textContent = evenNumbersString;
+};

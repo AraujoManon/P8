@@ -13,11 +13,11 @@ const calculateResult = () => {
     const result = eval(display.value);
 
     if (isNaN(result) || !isFinite(result)) {
-      display.value = "Error";
+      display.value = "Erreur";
     } else {
       display.value = result;
     }
   } catch (error) {
-    display.value = "Error";
+    display.value = "Erreur";
   }
 };
