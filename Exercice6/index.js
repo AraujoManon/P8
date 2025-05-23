@@ -1,23 +1,25 @@
 const display = document.getElementById("display");
 
-const appendToDisplay = (value) => {
-  display.value += value;
-};
-
-const clearDisplay = () => {
+function appendToDisplay(input) {
+  display.value += input;
+}
+function clearDisplay() {
   display.value = "";
-};
-
-const calculateResult = () => {
+}
+function calculateResult() {
+  if (display.value.includes('/') && display.value.includes('0')) {
+    display.value = "Division by zero is not allowed";
+    return;
+  }
+  
   try {
     const result = eval(display.value);
-
-    if (isNaN(result) || !isFinite(result)) {
-      display.value = "Erreur";
+    if (result === Infinity || result === -Infinity) {
+      display.value = "Division by zero is not allowed";
     } else {
-      display.value = result;
+      display.value = result.toString();
     }
   } catch (error) {
-    display.value = "Erreur";
+    display.value = "Error";
   }
-};
+}

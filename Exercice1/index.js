@@ -1,32 +1,14 @@
-const pairNumbers = (min, max) => {
-  let result = "";
-
-  for (let i = min; i <= max; i++) {
-    if (i % 2 === 0) {
-      if (result !== "") {
-        result += ",";
-      }
-      result += i;
-    }
+function pairNumbers(min, max) {
+    min = Number(min);
+    max = Number(max);
+  const pairs = [];
+  //  Pour chaque i qui est égal à min si min est pair,
+  //  ou à min + 1 si min est impair, et tant que i est inférieur ou égal à max, 
+  // augmente i de 2 à chaque tour et ajoute i au tableau pairs
+  for (let i = min + (min % 2 === 0 ? 0 : 1); i <= max; i += 2) {
+    pairs.push(i);
   }
-
-  return result;
-};
-
-const displayEvenNumbers = () => {
-  const minInput = document.getElementById("minInput");
-  const maxInput = document.getElementById("maxInput");
-  const resultArea = document.getElementById("resultArea");
-
-  const min = parseInt(minInput.value);
-  const max = parseInt(maxInput.value);
-
-  if (isNaN(min) || isNaN(max)) {
-    resultArea.textContent =
-      "Veuillez entrer des nombres valides pour le minimum et le maximum.";
-    return;
-  }
-
-  const evenNumbersString = pairNumbers(min, max);
-  resultArea.textContent = evenNumbersString;
-};
+  return pairs.join(",");
+}
+export default pairNumbers;
+console.log(pairNumbers(1, 4));

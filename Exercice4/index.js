@@ -1,7 +1,12 @@
 const button = document.getElementById("myButton");
+const messageContainer = document.getElementById("messageContainer");
 
 button.addEventListener("click", () => {
-  const messageParagraph = document.createElement("p");
-  messageParagraph.textContent = "Bonjour, vous avez cliqué sur le bouton !";
-  button.parentNode.insertBefore(messageParagraph, button.nextSibling);
+    // Créer un nouvel élément paragraphe avec la classe message
+    const message = document.createElement("p");
+    message.className = "message";
+    message.textContent = "Bonjour, vous avez cliqué sur le bouton !";
+    
+    // Ajouter le message au conteneur
+    messageContainer.appendChild(message);
 });
